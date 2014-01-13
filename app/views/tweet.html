@@ -1,0 +1,28 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="http://twitter.com/yosuke_furukawa">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">angular koa</h3>
+</div>
+
+<div class="jumbotron">
+  <h1>Tweet</h1>
+  <textarea class="form-control" rows="3" ng-model="tweet.body" ng-maxlength='140'>
+  </textarea>
+  <p>
+  <a class="btn btn-lg btn-success" ng-click="update(tweet)">Tweet!</a>
+  <a class="btn btn-lg btn-default" ng-click="reset()">Clear</a>
+  </p>
+</div>
+
+<div>
+  Search: <input ng-model="query">
+</div>
+<div infinite-scroll='loadMore()' infinite-scroll-distance='5'>
+  <div class="row marketing" ng-repeat="tweet in tweets | filter:query">
+    <h4>{{tweet.body}}</h4>
+    <a href="#/{{tweet._id}}">detail</a>
+  </div>
+</div>
+
