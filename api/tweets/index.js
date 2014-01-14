@@ -6,6 +6,7 @@
 var parse = require('co-body');
 var monk = require('monk');
 var monkWrapper = require('co-monk');
+console.log('mongolab uri : ' + process.env.MONGOLAB_URI);
 var db = process.env.MONGOLAB_URI ? monk(process.env.MONGOLAB_URI) : monk('localhost:27017/tweets');
 var tweets = monkWrapper(db.get('tweets'));
 var co = require('co');
