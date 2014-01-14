@@ -13,7 +13,7 @@ var counter = require('./counter.js');
 var listsNum = 10;
 
 co(function *() {
-  yield counter.init();
+  yield counter.init(db);
 })();
 
 /**
@@ -45,7 +45,7 @@ exports.create = function *(body){
   if (!body.body) this.throw(400, '.body required');
   if (body.body.length > 140) this.throw(400, '.body is longer than maxlength');
   body.updatedAt =  (new Date() /1000) | 0;
-  body._id = yield counter.next();
+  body._id = yield counter.next(db);
   yield tweets.insert(body);
   this.status = 201;
   this.body = 'added!';
