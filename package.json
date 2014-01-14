@@ -49,7 +49,7 @@
     "supertest": "~0.8.3"
   },
   "engines": {
-    "node": ">=0.11.3"
+    "node": "> 0.11.9"
   },
   "scripts": {
     "start": "node --harmony ./bin/api",
