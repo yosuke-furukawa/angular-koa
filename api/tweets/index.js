@@ -6,7 +6,7 @@
 var parse = require('co-body');
 var monk = require('monk');
 var monkWrapper = require('co-monk');
-var db = monk('localhost:27017/tweets');
+var db = process.env.MONGOLAB_URI ? monk(process.env.MONGOLAB_URI) : monk('localhost:27017/tweets');
 var tweets = monkWrapper(db.get('tweets'));
 var co = require('co');
 var counter = require('./counter.js');

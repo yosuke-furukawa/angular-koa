@@ -49,12 +49,21 @@ function api(opts) {
 
   app.use(compress());
 
+  var redisClient;
+  if (process.env.REDISTOGO_URL) {
+    var rtg = require('url').parse(process.env.REDISTOGO_URL);
+    redisClient = redis.createClient(rtg.port, rtg.hostname);
+    redisClient.auth(rtg.auth.split(":")[1]);
+  } else {
+    redisClient = redis.createClient();
+  }
+
   // rate limiting
 
   app.use(ratelimit({
     max: opts.ratelimit,
     duration: opts.duration,
-    db: redis.createClient()
+    db: redisClient
   }));
 
   // static file serve
