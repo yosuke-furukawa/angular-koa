@@ -1,13 +1,29 @@
-
 # Koa API Boilerplate
 
   Boilerplate API application structure - at least one flavour.
 
 ## Installation
 
-  cloneeeee
+```
+  git clone https://github.com/yosuke-furukawa/angular-koa.git
+  cd angular-koa
+  npm install
+  bower install
+```
 
-## Usage
+## Start
+
+```
+  npm start
+```
+
+or 
+
+```
+  node --harmony ./bin/api
+```
+
+## `./bin/api` Usage
 
 ```
 
@@ -30,10 +46,18 @@
 
   Run `make test`
 
-## API Versioning
+### Requirement Middleware
 
-  Use a proxy for `/v1`, `/v2` etc and launch new `api(1)` programs, don't version
-  in the same application, it's brittle, bloaty and pointless.
+  redis-server
+  mongoDB
+  
+  If you have `brew`, execute following commands:
+  
+  ```
+  brew install redis
+  brew install mongodb
+  ```
+
 
 # License
 
